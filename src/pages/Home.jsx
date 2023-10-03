@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import LatestNews from "../components/LatestNews";
 import LeftSideNav from "../components/LeftSideNav";
 import Navbar from "../components/Navbar";
 import RightSideNav from "../components/RightSideNav";
@@ -8,6 +9,7 @@ const Home = () => {
     return (
         <div>
             <Header></Header>
+            <LatestNews></LatestNews>
             <Navbar></Navbar>
             <h1 className="text-center">This is Home Page</h1>
             <div className="grid grid-cols-1 md:grid-cols-4">
