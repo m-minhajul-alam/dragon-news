@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../Provisers/AuthProvider";
 
 const Register = () => {
-    
+    const { createUser } = useContext(AuthContext)
+
     const hendelRegister = (e) => {
         e.preventDefault();
-
-        // const name = e.target.name.value;
-        // const url = e.target.url.value;
-        // const email = e.target.email.value;
-        // const password = e.target.password.value;
-        // console.log(name, url, email, password);
-
-        console.log(e.currentTarget);
         const from = new FormData(e.currentTarget)
-        console.log(from.get('email'));
-
+        const email = (from.get('email'));
+        const password = (from.get('password'));
+        // ................................................Cerate User
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div>
@@ -49,10 +52,10 @@ const Register = () => {
                             {/* photo url input */}
                             <input
                                 type="url"
-                                name="url"
+                                name="photo"
                                 placeholder="Photo URL"
                                 className="input input-bordered"
-                                required
+                            // required
                             />
 
                         </div>

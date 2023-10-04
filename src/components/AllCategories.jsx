@@ -12,8 +12,6 @@ const AllCategories = () => {
             .then(data => setCategoreys(data))
     }, [])
 
-    console.log(categories);
-
     return (
         <div className="p-3 space-y-2">
 

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../Provisers/AuthProvider";
 
 const Login = () => {
+
+    const { logIn } = useContext(AuthContext);
 
     const hendelLogin = (e) => {
         e.preventDefault();
@@ -10,9 +14,22 @@ const Login = () => {
         // const password = e.target.password.value;
         // console.log(email, password);
 
-        console.log(e.currentTarget);
+        // console.log(e.currentTarget);
+
         const from = new FormData(e.currentTarget)
-        console.log(from.get('email', 'password'));
+        const email = (from.get('email'));
+        const password = (from.get('password'));
+
+        console.log(email, password);
+
+        // login
+        logIn(email, password)
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.error(error);
+            })
 
     }
 
