@@ -20,6 +20,7 @@ const Register = () => {
                 console.log(error);
             })
     }
+    
     return (
         <div>
             <Navbar></Navbar>

@@ -1,24 +1,35 @@
+import { useLoaderData } from "react-router-dom";
 import Header from "../components/Header";
 import LatestNews from "../components/LatestNews";
 import LeftSideNav from "../components/LeftSideNav";
 import Navbar from "../components/Navbar";
 import RightSideNav from "../components/RightSideNav";
+import NewsCard from "../components/NewsCard";
 
 
 const Home = () => {
+    const newses = useLoaderData();
+
     return (
         <div>
             <Header></Header>
             <LatestNews></LatestNews>
             <Navbar></Navbar>
-            <h1 className="text-center">This is Home Page</h1>
+
             <div className="grid grid-cols-1 md:grid-cols-4">
                 <div>
                     <LeftSideNav></LeftSideNav>
                 </div>
+
                 <div className="md:col-span-2">
-                    <h1 className="text-center">All Newses</h1>
+                    <h2 className="text-xl font-semibold ">Dragon News Home</h2>
+                    {
+                        newses?.map(news => <NewsCard
+                            key={news._id}
+                            news={news}></NewsCard>)
+                    }
                 </div>
+
                 <div>
                     <RightSideNav></RightSideNav>
                 </div>
